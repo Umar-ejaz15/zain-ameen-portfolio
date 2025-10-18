@@ -2,37 +2,49 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function Process() {
-  const [activePhase, setActivePhase] = useState(0);
-  const sectionRef = useRef(null);
-  const phaseRefs = useRef([]);
+interface Phase {
+  number: string;
+  title: string;
+  description: string;
+  image: string;
+  color: string;
+}
 
-  const phases = [
+export default function Process() {
+  const [activePhase, setActivePhase] = useState<number>(0);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const phaseRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const phases: Phase[] = [
     {
       number: "01",
       title: "Discover",
-      description: "Deep dive into your business. Competitor analysis. Audience research. Opportunity mapping. Find what competitors miss.",
+      description:
+        "Deep dive into your business. Competitor analysis. Audience research. Opportunity mapping. Find what competitors miss.",
       image: "/images/discover.jpg",
       color: "#E5DBEB",
     },
     {
       number: "02",
       title: "Define",
-      description: "Build your growth roadmap. GTM strategy. Messaging framework. Channel selection. 90-day action plan.",
+      description:
+        "Build your growth roadmap. GTM strategy. Messaging framework. Channel selection. 90-day action plan.",
       image: "/images/define.jpg",
       color: "#F4F2EF",
     },
     {
       number: "03",
       title: "Develop",
-      description: "Execute the plan. Content creation. SEO optimization. Community building. Campaign launches. Weekly optimization.",
+      description:
+        "Execute the plan. Content creation. SEO optimization. Community building. Campaign launches. Weekly optimization.",
       image: "/images/develop.jpg",
       color: "#DCE4EA",
     },
     {
       number: "04",
       title: "Deliver",
-      description: "Track everything. Analyze data. Optimize what works. Scale winning channels. Report results monthly.",
+      description:
+        "Track everything. Analyze data. Optimize what works. Scale winning channels. Report results monthly.",
       image: "/images/deliver.jpg",
       color: "#FFE5E5",
     },
@@ -42,8 +54,6 @@ export default function Process() {
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionHeight = sectionRef.current.offsetHeight;
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       phaseRefs.current.forEach((ref, index) => {
