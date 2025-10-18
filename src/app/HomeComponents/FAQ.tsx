@@ -101,7 +101,9 @@ export default function Process() {
             {phases.map((phase, index) => (
               <div
                 key={index}
-                ref={(el) => (phaseRefs.current[index] = el)}
+                ref={(el) => {
+                  phaseRefs.current[index] = el;
+                }}
                 className="min-h-[60vh] flex items-center"
               >
                 <motion.div
@@ -116,7 +118,8 @@ export default function Process() {
                     className="rounded-3xl p-8 md:p-10 shadow-lg transition-all duration-500"
                     style={{
                       backgroundColor: phase.color,
-                      transform: activePhase === index ? "scale(1.02)" : "scale(1)",
+                      transform:
+                        activePhase === index ? "scale(1.02)" : "scale(1)",
                       opacity: activePhase === index ? 1 : 0.6,
                     }}
                   >
