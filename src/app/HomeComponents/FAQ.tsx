@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
@@ -48,89 +48,99 @@ export default function FAQ() {
     },
   ];
 
-  const toggleFAQ = (index: any) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="bg-white py-20 px-4">
+    <section className="bg-[#F9F7F4] py-20 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Headline */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1C1C1E] leading-tight">
             Questions?{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Here Are Quick Answers.
-            </span>
+            <span className="text-[#E6B17E]">Here Are Quick Answers.</span>
           </h2>
+          <p className="mt-4 text-sm text-[#A6A6A6]">
+            Short, direct answers — if you want more detail we can jump on a quick call.
+          </p>
         </motion.div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-[#F8F6F4] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+              transition={{ duration: 0.42, delay: index * 0.04 }}
+              className="bg-white border border-[#F0EDE9] rounded-2xl shadow-sm hover:shadow-md transition-all duration-250"
             >
-              {/* Question Button */}
+              {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 md:px-8 py-6 flex items-center justify-between gap-4 text-left group"
+                className="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left group"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
               >
                 <div className="flex items-start gap-4 flex-1">
-                  {/* Q Number */}
-                  <span className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold flex items-center justify-center text-sm">
+                  <span
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold`}
+                    style={{
+                      background: openIndex === index ? "#E6B17E" : "#F4F2EF",
+                      color: openIndex === index ? "#1C1C1E" : "#1C1C1E",
+                      border: openIndex === index ? "none" : "1px solid #EFECE8",
+                    }}
+                  >
                     Q{index + 1}
                   </span>
 
-                  {/* Question Text */}
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors pt-1">
+                  <h3
+                    className="text-base md:text-lg font-medium text-[#1C1C1E] transition-colors"
+                    style={{ marginTop: 2 }}
+                  >
                     {faq.question}
                   </h3>
                 </div>
 
-                {/* Toggle Icon */}
-                <div className="flex-shrink-0">
-                  <svg
-                    className={`w-6 h-6 text-gray-600 transition-transform duration-300 ${
-                      openIndex === index ? "rotate-180" : ""
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
+                <svg
+                  className={`w-6 h-6 text-[#A6A6A6] transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180 text-[#E6B17E]" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
               </button>
 
               {/* Answer */}
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {openIndex === index && (
                   <motion.div
+                    id={`faq-answer-${index}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    transition={{ duration: 0.28, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 md:px-8 pb-6 pl-20">
-                      <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                    <div className="px-6 md:px-8 pb-6 pl-20 bg-[#F9F7F4]">
+                      <p className="text-[#4A4A4A] leading-relaxed text-base md:text-lg">
                         {faq.answer}
                       </p>
                     </div>
@@ -143,18 +153,20 @@ export default function FAQ() {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="text-center mt-12"
         >
-          <p className="text-lg text-gray-600 mb-6">
-            Still have questions? Let's talk.
+          <p className="text-[#4A4A4A] mb-5">
+            Still have a question? I offer a free 20-minute discovery call.
           </p>
+
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-xl"
+            className="inline-flex items-center gap-3 bg-[#E6B17E] hover:bg-[#D4A866] text-[#1C1C1E] px-6 py-3 rounded-full font-semibold text-lg transition-all duration-200 shadow-md"
+            aria-label="Book a free call"
           >
             Book a Free Call
             <svg
@@ -162,6 +174,7 @@ export default function FAQ() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden
             >
               <path
                 strokeLinecap="round"

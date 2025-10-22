@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import FooterCTA from "../HomeComponents/FooterCTA";
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
@@ -161,23 +162,7 @@ export default function Projects() {
                         ))}
                       </div>
 
-                      {/* CTA */}
-                      <div className="flex items-center gap-2 text-gray-900 font-semibold group-hover:gap-4 transition-all">
-                        Read Full Story
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </div>
+                    
                     </div>
                   </div>
                 </Link>
@@ -186,45 +171,7 @@ export default function Projects() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="pb-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-12 text-center text-white shadow-2xl"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Write Your Success Story?
-            </h2>
-            <p className="text-lg md:text-xl mb-8 opacity-90">
-              Let's discuss how we can achieve similar results for your business
-            </p>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-xl"
-            >
-              Book Your Free Strategy Call
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+<FooterCTA/>
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function Process() {
       description:
         "Deep dive into your business. Competitor analysis. Audience research. Opportunity mapping. Find what competitors miss.",
       image: "/images/discover.jpg",
-      color: "#E5DBEB",
+      color: "#F4F2EF",
     },
     {
       number: "02",
@@ -30,7 +30,7 @@ export default function Process() {
       description:
         "Build your growth roadmap. GTM strategy. Messaging framework. Channel selection. 90-day action plan.",
       image: "/images/define.jpg",
-      color: "#F4F2EF",
+      color: "#F9F7F4",
     },
     {
       number: "03",
@@ -38,7 +38,7 @@ export default function Process() {
       description:
         "Execute the plan. Content creation. SEO optimization. Community building. Campaign launches. Weekly optimization.",
       image: "/images/develop.jpg",
-      color: "#DCE4EA",
+      color: "#F7F5F3",
     },
     {
       number: "04",
@@ -46,7 +46,7 @@ export default function Process() {
       description:
         "Track everything. Analyze data. Optimize what works. Scale winning channels. Report results monthly.",
       image: "/images/deliver.jpg",
-      color: "#FFE5E5",
+      color: "#FFF8F2",
     },
   ];
 
@@ -55,12 +55,10 @@ export default function Process() {
       if (!sectionRef.current) return;
 
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-
       phaseRefs.current.forEach((ref, index) => {
         if (ref) {
           const elementTop = ref.offsetTop;
           const elementBottom = elementTop + ref.offsetHeight;
-
           if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
             setActivePhase(index);
           }
@@ -69,13 +67,13 @@ export default function Process() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white py-20 px-4">
+    <section ref={sectionRef} className="bg-[#F9F7F4] py-24 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Headline */}
         <motion.div
@@ -85,18 +83,16 @@ export default function Process() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-[#1C1C1E] leading-tight">
             My 4-Phase System for
             <br />
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Predictable Growth
-            </span>
+            <span className="text-[#E6B17E]">Predictable Growth</span>
           </h2>
         </motion.div>
 
         {/* Process Container */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
-          {/* Left Side - Scrolling Content */}
+          {/* Left - Phases */}
           <div className="lg:w-1/2 space-y-32">
             {phases.map((phase, index) => (
               <div
@@ -113,9 +109,8 @@ export default function Process() {
                   transition={{ duration: 0.6 }}
                   className="w-full"
                 >
-                  {/* Phase Card */}
                   <div
-                    className="rounded-3xl p-8 md:p-10 shadow-lg transition-all duration-500"
+                    className="rounded-3xl p-10 shadow-lg border border-[#F0EDE9] transition-all duration-500"
                     style={{
                       backgroundColor: phase.color,
                       transform:
@@ -123,14 +118,14 @@ export default function Process() {
                       opacity: activePhase === index ? 1 : 0.6,
                     }}
                   >
-                    {/* Phase Number */}
+                    {/* Phase Number Line */}
                     <div className="flex items-center gap-4 mb-6">
-                      <span className="text-6xl font-bold text-gray-900/30">
+                      <span className="text-6xl font-bold text-[#1C1C1E]/20">
                         {phase.number}
                       </span>
-                      <div className="h-1 flex-1 bg-gray-900/20 rounded-full">
+                      <div className="h-1 flex-1 bg-[#1C1C1E]/10 rounded-full">
                         <div
-                          className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full transition-all duration-500"
+                          className="h-full bg-[#E6B17E] rounded-full transition-all duration-500"
                           style={{
                             width: activePhase === index ? "100%" : "0%",
                           }}
@@ -138,13 +133,10 @@ export default function Process() {
                       </div>
                     </div>
 
-                    {/* Phase Title */}
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    <h3 className="text-3xl md:text-4xl font-semibold text-[#1C1C1E] mb-4">
                       Phase {index + 1}: {phase.title}
                     </h3>
-
-                    {/* Phase Description */}
-                    <p className="text-lg text-gray-700 leading-relaxed">
+                    <p className="text-lg text-[#4A4A4A] leading-relaxed">
                       {phase.description}
                     </p>
                   </div>
@@ -153,7 +145,7 @@ export default function Process() {
             ))}
           </div>
 
-          {/* Right Side - Sticky Image */}
+          {/* Right - Sticky Images */}
           <div className="lg:w-1/2 relative">
             <div className="sticky top-24 h-[70vh] hidden lg:block">
               {phases.map((phase, index) => (
@@ -172,7 +164,6 @@ export default function Process() {
                     alt={phase.title}
                     className="w-full h-full object-cover"
                   />
-                  {/* Overlay with Phase Number */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
                     <div className="text-white">
                       <span className="text-7xl font-bold opacity-80">
@@ -187,19 +178,17 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Bottom Text */}
+        {/* Bottom Line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mt-20"
+          className="text-center mt-24"
         >
-          <p className="text-2xl md:text-3xl font-bold text-gray-900">
+          <p className="text-2xl md:text-3xl font-semibold text-[#1C1C1E]">
             No guesswork.{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Just systems that scale.
-            </span>
+            <span className="text-[#E6B17E]">Just systems that scale.</span>
           </p>
         </motion.div>
       </div>

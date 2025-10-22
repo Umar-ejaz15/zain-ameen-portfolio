@@ -9,7 +9,6 @@ export default function Testimonials() {
       text: "Zain took our SaaS from zero to ~85,000 users in a year. All organic. His Reddit strategy alone brought thousands of qualified users without spending a dollar. He's a growth architect, not just a marketer.",
       author: "Founder",
       company: "Amoxt Solutions (Blainy)",
-      avatar: "/avatars/avatar1.jpg",
       rating: 5,
     },
     {
@@ -17,7 +16,6 @@ export default function Testimonials() {
       text: "We needed B2B leads fast. Zain delivered 7,331 users and 831 Reddit conversions in weeks. His systems work. Period.",
       author: "Marketing Lead",
       company: "Hify",
-      avatar: "/avatars/avatar2.jpg",
       rating: 5,
     },
     {
@@ -25,7 +23,6 @@ export default function Testimonials() {
       text: "As a service business, we needed local leads. Zain built our Google presence, optimized our SEO, and generated consistent qualified leads. Best ROI we've seen.",
       author: "Owner",
       company: "Everdry Waterproofing",
-      avatar: "/avatars/avatar3.jpg",
       rating: 5,
     },
     {
@@ -33,7 +30,6 @@ export default function Testimonials() {
       text: "His multi-channel approach brought visibility we couldn't achieve alone. LinkedIn, Reddit, TikTok—he knows how each platform works and delivers results.",
       author: "CEO",
       company: "Tech Startup",
-      avatar: "/avatars/avatar4.jpg",
       rating: 5,
     },
     {
@@ -41,12 +37,10 @@ export default function Testimonials() {
       text: "Zain built email campaigns that actually converted. Above-industry open rates, better CTRs, and real user activation. He knows retention inside out.",
       author: "Product Manager",
       company: "SaaS Company",
-      avatar: "/avatars/avatar5.jpg",
       rating: 5,
     },
   ];
 
-  // Duplicate testimonials for seamless loop
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   const StarRating = () => (
@@ -54,7 +48,7 @@ export default function Testimonials() {
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className="w-5 h-5 text-yellow-400 fill-current"
+          className="w-5 h-5 text-[#E6B17E] fill-current"
           viewBox="0 0 20 20"
         >
           <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -64,7 +58,7 @@ export default function Testimonials() {
   );
 
   return (
-    <section className="bg-white py-20 px-4 overflow-hidden mt-5">
+    <section className="bg-[#F9F7F4] py-24 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Headline */}
         <motion.div
@@ -72,20 +66,17 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#1C1C1E] leading-tight mb-6">
             What Clients Say About
             <br />
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Working With Me
-            </span>
+            <span className="text-[#E6B17E]">Working With Me</span>
           </h2>
 
-          {/* NDA Note */}
-          <div className="inline-flex items-center gap-2 bg-gray-100 px-6 py-3 rounded-full">
+          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-6 py-3 rounded-full shadow-sm">
             <svg
-              className="w-5 h-5 text-gray-600"
+              className="w-5 h-5 text-[#A6A6A6]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -98,38 +89,31 @@ export default function Testimonials() {
               />
             </svg>
             <span className="text-sm font-medium text-gray-700">
-              Most projects under NDA. Here are testimonials I can share.
+              Most projects are under NDA — here are testimonials I can share.
             </span>
           </div>
         </motion.div>
 
-        {/* Marquee Container */}
+        {/* Marquee */}
         <div className="relative">
-          {/* Left Fade */}
-     
-
-          {/* Marquee Track */}
           <div className="flex animate-marquee-slow hover:pause gap-6 py-8">
             {duplicatedTestimonials.map((testimonial, index) => (
               <div
                 key={`${testimonial.id}-${index}`}
-                className="flex-shrink-0 w-[420px] bg-[#F8F6F4] rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300"
+                className="flex-shrink-0 w-[420px] bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-[#F0EDE9]"
               >
-                {/* Star Rating */}
                 <StarRating />
 
-                {/* Testimonial Text */}
-                <p className="text-gray-800 leading-relaxed mb-6 text-base">
-                  "{testimonial.text}"
+                <p className="text-[#1C1C1E] leading-relaxed mb-6 text-base">
+                  “{testimonial.text}”
                 </p>
 
-                {/* Author Info */}
-                <div className="flex items-center gap-4 pt-4 border-t border-gray-300">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+                <div className="flex items-center gap-4 pt-4 border-t border-gray-200">
+                  <div className="w-12 h-12 rounded-full bg-[#E6B17E]/30 flex items-center justify-center text-[#1C1C1E] font-bold text-lg">
                     {testimonial.author.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">
+                    <p className="font-semibold text-[#1C1C1E]">
                       {testimonial.author}
                     </p>
                     <p className="text-sm text-gray-600">
@@ -154,7 +138,7 @@ export default function Testimonials() {
         }
 
         .animate-marquee-slow {
-          animation: marquee-slow 40s linear infinite;
+          animation: marquee-slow 45s linear infinite;
           display: flex;
           width: max-content;
         }

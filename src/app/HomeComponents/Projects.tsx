@@ -16,10 +16,6 @@ export default function Projects() {
         "100s of paying customers",
         "$0 spent on ads",
       ],
-      challenge:
-        "Launch AI writing tool against giants like Grammarly and Jasper. Zero budget. Zero brand awareness.",
-      strategy:
-        "Built a multi-channel organic machine. SEO, Reddit, social, email, partnerships.",
       cta: "Want ~85K Users? Read the Full Story →",
       bgColor: "#E5DBEB", // Light purple
     },
@@ -33,19 +29,12 @@ export default function Projects() {
         "$0 ad spend",
         "Higher conversion rate than paid channels",
       ],
-      challenge: "Traditional ads expensive and ineffective.",
-      strategy:
-        "Deep Reddit strategy. Value-first content. Community authority building.",
       cta: "See How I Did It →",
       bgColor: "#F4F2EF", // Warm beige
     },
     {
       title: "Case Study 3: Service Business - Everdry Waterproofing",
       image: "/images/local-business.jpg",
-      challenge:
-        "Local service business needs leads in specific geographic market.",
-      strategy:
-        "Local SEO domination. Google Business optimization. Review generation.",
       result:
         "Increased local visibility. More qualified leads. Stronger online presence.",
       cta: "Need Local Marketing? Let's Talk →",
@@ -61,8 +50,6 @@ export default function Projects() {
         "~3M Instagram reach",
         "6 platforms managed simultaneously",
       ],
-      strategy:
-        "Platform-specific content. Educational over promotional. Community engagement.",
       cta: "Scale Your Social Presence →",
       bgColor: "#F4F2EF", // Warm beige (alternate)
     },

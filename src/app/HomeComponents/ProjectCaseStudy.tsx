@@ -21,7 +21,7 @@ interface ProjectCaseStudyProps {
 
 export default function ProjectCaseStudy({ caseData }: ProjectCaseStudyProps) {
   return (
-    <section id="cards" className="relative flex flex-col items-center gap-6 py-10 px-4">
+    <section id="cards" className="relative flex flex-col items-center gap-0 py-10 px-4">
       {caseData.map((item, index) => (
         <div
         

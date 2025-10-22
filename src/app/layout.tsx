@@ -29,7 +29,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}    cz-shortcut-listen="true" antialiased`}
       >
         {children}
-        <Footer/>
       </body>
     </html>
   );
